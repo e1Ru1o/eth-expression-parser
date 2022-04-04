@@ -29,7 +29,7 @@ To evaluate an expresion you should provide the expression as well as a `context
 the value of all the variables contained in the expression.
 
 ```javascript
-const parser = require("eth-expresion-parser");
+const { evaluate } = require("eth-expresion-parser");
 const ethers = require("ethers");
 
 const expr = "(1e18 == 0x1 ether) && (obj.sum(a, 2, d[1][0]) + 4 > 3 wei) && (b[2] == 'x')";
@@ -45,7 +45,7 @@ const context = {
     }
 };
 
-console.log(parser.evaluate(expr, context)); // true
+console.log(evaluate(expr, context)); // true
 ```
 
 If you are familiar with [nearley](https://nearley.js.org/docs/index), you can get the parser 
@@ -59,13 +59,13 @@ const _parser = parser.getNearleyParser();
 
 You can also get the function to evaluate your expression if needed.
 ```javascript
-const parser = require("eth-expresion-parser");
+const { parse, toBigNumber } = require("eth-expresion-parser");
 
 const expr = "a < b";
 
-const evaluate = parser.parse(expr);
+const evaluate = parse(expr);
 
-console.log(evaluate({a: "a", b: "b"})); // true
+console.log(evaluate({a: toBigNumber(1), b: toBigNumber(3)})); // true
 console.log(evaluate({a: "c", b: "a"})); // false
 ```
 

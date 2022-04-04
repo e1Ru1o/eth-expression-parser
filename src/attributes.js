@@ -16,8 +16,8 @@ const lte = ([f0,,,, f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).lte(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).lte(tools.toBigNumber(right));
     
     return left <= right;
 };
@@ -26,8 +26,8 @@ const gte = ([f0,,,, f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).gte(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).gte(tools.toBigNumber(right));
     
     return left >= right;
 };
@@ -36,8 +36,8 @@ const eq = ([f0,,,, f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).eq(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).eq(tools.toBigNumber(right));
     
     return left === right;
 };
@@ -46,8 +46,8 @@ const neq = ([f0,,,, f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return !ethers.BigNumber.from(left).eq(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return !tools.toBigNumber(left).eq(tools.toBigNumber(right));
     
     return left !== right;
 };
@@ -56,8 +56,8 @@ const lt = ([f0,,,, f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).lt(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).lt(tools.toBigNumber(right));
     
     return left < right;
 };
@@ -66,8 +66,8 @@ const gt = ([f0,,,, f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).gt(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).gt(tools.toBigNumber(right));
     
     return left > right;
 };
@@ -83,18 +83,18 @@ const variable = (data, _, reject) => {
     return (context) => context[data.flat().join("")];
 };
 
-const num = (data)=> (context) => ethers.BigNumber.from(data.flat().join(""));
+const num = (data)=> (context) => tools.toBigNumber(data.flat().join(""));
 
 const negnum = ([, num]) => (context) => num(context).mul(-1);
 
 const scientific = ([num0,,num1]) => (context) => {
-    const a = ethers.BigNumber.from(num0.flat().join(""));
-    const b = ethers.BigNumber.from(num1.flat().join(""));
+    const a = tools.toBigNumber(num0.flat().join(""));
+    const b = tools.toBigNumber(num1.flat().join(""));
 
-    return a.mul(ethers.BigNumber.from(10).pow(b));
+    return a.mul(tools.toBigNumber(10).pow(b));
 }
 
-const unit = (unitValue) => ([value,]) => (context) => tools.flattenDeep(value)[0](context).mul(ethers.BigNumber.from(unitValue));
+const unit = (unitValue) => ([value,]) => (context) => tools.flattenDeep(value)[0](context).mul(tools.toBigNumber(unitValue));
 
 const ether = unit("1000000000000000000");
 const gwei  = unit("1000000000");
@@ -104,8 +104,8 @@ const add = ([f0,,,,f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).add(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).add(tools.toBigNumber(right));
     
     return left + right;
 };
@@ -114,8 +114,8 @@ const sub = ([f0,,,,f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
 
-    if(ethers.BigNumber.isBigNumber(left) || ethers.BigNumber.isBigNumber(right))
-        return ethers.BigNumber.from(left).sub(ethers.BigNumber.from(right));
+    if(tools.isBigNumber(left) || tools.isBigNumber(right))
+        return tools.toBigNumber(left).sub(tools.toBigNumber(right));
     
     return left - right;
 };
@@ -124,14 +124,14 @@ const mul = ([f0,,,,f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
     
-    return ethers.BigNumber.from(left).mul(ethers.BigNumber.from(right));
+    return tools.toBigNumber(left).mul(tools.toBigNumber(right));
 };
 
 const div = ([f0,,,,f1]) => (context) => {
     const left  = tools.flattenDeep([f0])[0](context);
     const right = tools.flattenDeep([f1])[0](context);
     
-    return ethers.BigNumber.from(left).div(ethers.BigNumber.from(right));
+    return tools.toBigNumber(left).div(tools.toBigNumber(right));
 };
 
 const and = ([f0,,,,f1]) => (context) => {
@@ -156,7 +156,7 @@ const _false = id(false);
 const neg = ([,,f]) => (context) => {
     const expr = tools.flattenDeep([f])[0](context);
     
-    if(ethers.BigNumber.isBigNumber(expr))
+    if(tools.isBigNumber(expr))
         return expr.isZero();
     return !expr;
 };

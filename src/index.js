@@ -21,4 +21,5 @@ module.exports = {
   getNearleyParser,
   parse,
   evaluate,
+  toBigNumber: tools.toBigNumber,
 };
