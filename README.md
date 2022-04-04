@@ -15,7 +15,7 @@ This library allows you to evaluate expressions or conditions that may contain:
 It also has support for:
 - Indexing: `array[3]`
 - Member access: `object.property`, `obj.args`
-- Function calls: `object.func()`, `ojb.print(1, 2, 3, "text")`
+- Function calls: `object.func()`, `obj.print(1, 2, 3, "text")`
 - Variable names: `myVariable`, `_var`
 
 ## Installation
