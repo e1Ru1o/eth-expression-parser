@@ -76,6 +76,14 @@ numbers the type used is [ethers.BigNumber](https://docs.ethers.io/v5/api/utils/
 The usage of `ethers.BigNumber` as underlying type implies that all the numerical values used in 
 the `context` must also be of type `ethers.BigNumber` in order to be able to recognize them correctly.
 
+You can also use any method of the underlying types due to the function calls support:
+```javascript
+const { evaluate } = require("eth-expresion-parser");
+
+const expr = "1.toHexString() == '0x01'";
+
+console.log(evaluate(expr, {})); // true
+```
+
 ## Extra notes:
 - There is not support for floating precision numbers.
-
