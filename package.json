@@ -1,6 +1,6 @@
 {
   "name": "eth-expression-parser",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Expression parser for ethereum expressions",
   "main": "src/index.js",
   "files": [
@@ -18,10 +18,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/e1Ru1o/eth-expresion-parser.git"
+    "url": "https://github.com/e1Ru1o/eth-expression-parser.git"
   },
   "bugs": {
-    "url": "https://github.com/e1Ru1o/eth-expresion-parser/issues"
+    "url": "https://github.com/e1Ru1o/eth-expression-parser/issues"
   },
-  "homepage": "https://github.com/e1Ru1o/eth-expresion-parser#readme"
+  "homepage": "https://github.com/e1Ru1o/eth-expression-parser#readme"
 }

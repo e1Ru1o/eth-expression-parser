@@ -1,4 +1,4 @@
-# eth-expresion-parser
+# eth-expression-parser
 
 Expression parser for Ethereum expressions.
 
