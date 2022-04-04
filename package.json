@@ -1,8 +1,11 @@
 {
   "name": "eth-expression-parser",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Expression parser for ethereum expressions",
-  "main": "index.ts",
+  "main": "src/index.js",
+  "files": [
+    "src/*.js"
+  ],
   "scripts": {
     "compile": "nearleyc src/grammar.ne -o src/grammar.js",
     "grammar": "nearley-railroad src/grammar.ne -o grammar.html"
