@@ -1,6 +1,6 @@
 {
   "name": "eth-expression-parser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Expression parser for ethereum expressions",
   "main": "src/index.js",
   "files": [
@@ -15,5 +15,13 @@
   "dependencies": {
     "ethers": "^5.6.2",
     "nearley": "^2.20.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e1Ru1o/eth-expresion-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/e1Ru1o/eth-expresion-parser/issues"
+  },
+  "homepage": "https://github.com/e1Ru1o/eth-expresion-parser#readme"
 }
