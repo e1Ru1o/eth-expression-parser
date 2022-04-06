@@ -20,16 +20,16 @@ It also has support for:
 
 ## Installation
 ```bash
-npm install eth-expresion-parser
+npm install eth-expression-parser
 ```
 
 ## Usage
 
-To evaluate an expresion you should provide the expression as well as a `context` that contains
+To evaluate an expression you should provide the expression as well as a `context` that contains
 the value of all the variables contained in the expression.
 
 ```javascript
-const { evaluate } = require("eth-expresion-parser");
+const { evaluate } = require("eth-expression-parser");
 const ethers = require("ethers");
 
 const expr = "(1e18 == 0x1 ether) && (obj.sum(a, 2, d[1][0]) + 4 > 3 wei) && (b[2] == 'x')";
@@ -51,7 +51,7 @@ console.log(evaluate(expr, context)); // true
 If you are familiar with [nearley](https://nearley.js.org/docs/index), you can get the parser 
 or the grammar and use them however you prefer.
 ```javascript
-const parser = require("eth-expresion-parser");
+const parser = require("eth-expression-parser");
 
 const grammar = parser.getNearleyGrammar();
 const _parser = parser.getNearleyParser();
@@ -59,7 +59,7 @@ const _parser = parser.getNearleyParser();
 
 You can also get the function to evaluate your expression if needed.
 ```javascript
-const { parse, toBigNumber } = require("eth-expresion-parser");
+const { parse, toBigNumber } = require("eth-expression-parser");
 
 const expr = "a < b";
 
@@ -78,7 +78,7 @@ the `context` must also be of type `ethers.BigNumber` in order to be able to rec
 
 You can also use any method of the underlying types due to the function calls support:
 ```javascript
-const { evaluate } = require("eth-expresion-parser");
+const { evaluate } = require("eth-expression-parser");
 
 const expr = "1.toHexString() == '0x01'";
 
