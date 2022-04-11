@@ -46,8 +46,8 @@ atom        ->  unit
             |   "(" _ expression _ ")"                      {% ([,,expr,,]) => expr %}
             |   atom _ index                                {% attrs.indexer %}
             |   atom _ "." _ name                           {% attrs.get %}
-            |   atom _ "." _ name _ "(" _ ")"               {% attrs.call %}
-            |   atom _ "." _ name _ "(" _ params _ ")"      {% attrs.callWithParams %}
+            |   atom _ "(" _ ")"                            {% attrs.callable %}
+            |   atom _ "(" _ params _ ")"                   {% attrs.callableWithParams %}
 
 
 unit        ->  (number | variable) _ "wei"i                {% attrs.wei %}

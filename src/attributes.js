@@ -172,22 +172,23 @@ const get = ([f,,,,memberFunc]) => (context) => {
     const value = tools.flattenDeep([f])[0](context);
     const property = tools.flattenDeep([memberFunc])[0](context);
 
-    return value[property];
+    const returnValue = value[property];
+    if(typeof returnValue === 'function')
+        return returnValue.bind(value);
+    return returnValue;
 };
 
-const call = ([f,,,,memberFunc,,,,,]) => (context) => {
+const callable = ([f,,,,,]) => (context) => {
     const value = tools.flattenDeep([f])[0](context);
-    const property = tools.flattenDeep([memberFunc])[0](context);
 
-    return value[property]();
+    return value();
 };
 
-const callWithParams = ([f,,,,memberFunc,,,,paramsFunc,,]) => (context) => {
+const callableWithParams = ([f,,,,paramsFunc,,,]) => (context) => {
     const value = tools.flattenDeep([f])[0](context);
-    const property = tools.flattenDeep([memberFunc])[0](context);
     const params = tools.flattenDeep([paramsFunc]).map(p => p(context));
 
-    return value[property](...params);
+    return value(...params);
 };
 
 module.exports = {
@@ -204,5 +205,5 @@ module.exports = {
     // defaults
     _true, _false,
     // processors
-    indexer, get, name, call, callWithParams,
+    indexer, get, name, callable, callableWithParams,
 };

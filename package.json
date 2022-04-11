@@ -1,6 +1,6 @@
 {
   "name": "eth-expression-parser",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Expression parser for ethereum expressions",
   "main": "src/index.js",
   "files": [
